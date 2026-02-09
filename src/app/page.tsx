@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 
-import { authClient } from "@/lib/auth-client";
 import { Input } from "@/components/ui/input";
+import { authClient } from "@/lib/auth-client";
 import { Button } from "@base-ui/react";
 
 export default function Home() {
@@ -23,7 +23,7 @@ export default function Home() {
         window.alert("Something went wrong");
       },
       onSuccess : () => {
-        window.alert("Sucess");
+        window.alert("Success");
       }
     });
   }
