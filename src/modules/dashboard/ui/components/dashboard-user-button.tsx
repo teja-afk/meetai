@@ -1,7 +1,7 @@
 import { ChevronDownIcon, CreditCardIcon, LogOutIcon } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
 
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,9 +11,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { GeneratedAvatar } from "@/components/generated-avatar";
-import router from "next/router";
+import { useRouter } from "next/navigation";
 
 export const DashboardUserButton = () => {
+  const router = useRouter();
   const { data, isPending } = authClient.useSession();
 
   if (isPending || !data?.user) {
@@ -32,10 +33,13 @@ export const DashboardUserButton = () => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="rounded-lg border border/10 p-3 w-full flex items-center justify-between bg-white/5 hover:bg-white/10 overflow-hidden">
+      <DropdownMenuTrigger className="rounded-lg border border-white/10 p-3 w-full flex items-center justify-between bg-white/5 hover:bg-white/10 overflow-hidden">
         {data.user.image ? (
           <Avatar>
             <AvatarImage src={data.user.image} />
+            <AvatarFallback>
+            {data.user.name.charAt(0).toUpperCase()}
+          </AvatarFallback>
           </Avatar>
         ) : (
           <GeneratedAvatar
