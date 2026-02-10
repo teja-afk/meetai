@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
-import { FaGithub, FaGoogle }from "react-icons/fa";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 import { OctagonAlertIcon } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -161,7 +161,7 @@ export const SignInView = () => {
                     type="button"
                     className="w-full"
                   >
-                    <FaGoogle/>
+                    <FaGoogle />
                   </Button>
 
                   <Button
@@ -171,7 +171,7 @@ export const SignInView = () => {
                     type="button"
                     className="w-full"
                   >
-                    <FaGithub/>
+                    <FaGithub />
                   </Button>
                 </div>
                 <div className="text-center text-sm">
@@ -188,7 +188,7 @@ export const SignInView = () => {
           </Form>
 
           <div
-            className="bg-radial from-green-700 to-green-900 relative hidden md:flex flex-col
+            className="bg-radial from-sidebar-accent to-sidebar relative hidden md:flex flex-col
           gap-y-4 items-center justify-center"
           >
             <img src="/logo.svg" alt="Image" className="h-[92px] w-[92px]" />
