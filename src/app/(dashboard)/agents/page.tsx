@@ -7,6 +7,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import { auth } from '@/lib/auth';
 import { getQueryClient, trpc } from '@/trpc/server';
 
+import { loadSearchParams } from '@/modules/agents/params';
 import { AgentsListheader } from '@/modules/agents/ui/components/agents-list-header';
 import {
   AgentsView,
@@ -14,7 +15,6 @@ import {
   AgentsViewLoading
 } from '@/modules/agents/ui/views/agents-view';
 import { SearchParams } from 'nuqs';
-import { loadSearchParams } from '@/modules/agents/ui/params';
 
 interface Props {
   searchParams: Promise<SearchParams>
