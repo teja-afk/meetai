@@ -9,8 +9,9 @@ import { DEFAULT_PAGE } from "@/constants";
 import { useAgentsFilters } from "@/modules/agents/hooks/use-agents-filters";
 import { AgentsSearchFilter } from "@/modules/agents/ui/components/agents-search-filter";
 import { NewAgentDialog } from "@/modules/agents/ui/components/new-agent-dialog";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
-export const AgentsListheader = () => {
+export const AgentsListHeader = () => {
   const [filters, setFilters] = useAgentsFilters();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
@@ -24,25 +25,28 @@ export const AgentsListheader = () => {
   }
 
   return (
-  <>
-    <NewAgentDialog open={isDialogOpen} onOpenChange={setIsDialogOpen} />
-    <div className="py-4 px-4 md:px-8 flex flex-col gap-y-4">
-      <div className="flex items-center justify-between">
-        <h5 className="font-medium text-xl">My Agents</h5>
-        <Button onClick={() => setIsDialogOpen(true)}>
-          <PlusIcon />
-          New Agents
-        </Button>
-      </div>
-      <div className="flex items-center gap-x-2 p-1">
-        <AgentsSearchFilter />
-        {isAnyFilterModified && (
-          <Button variant="outline" size="sm" onClick={onClearFilters}>
-            <XCircleIcon />
+    <>
+      <NewAgentDialog open={isDialogOpen} onOpenChange={setIsDialogOpen} />
+      <div className="py-4 px-4 md:px-8 flex flex-col gap-y-4">
+        <div className="flex items-center justify-between">
+          <h5 className="font-medium text-xl">My Agents</h5>
+          <Button onClick={() => setIsDialogOpen(true)}>
+            <PlusIcon />
+            New Agent
           </Button>
-        )}
+        </div>
+        <ScrollArea>
+          <div className="flex items-center gap-x-2 p-1">
+            <AgentsSearchFilter />
+            {isAnyFilterModified && (
+              <Button variant="outline" size="sm" onClick={onClearFilters}>
+                <XCircleIcon />
+              </Button>
+            )}
+          </div>
+          <ScrollBar orientation="horizontal" />
+        </ScrollArea >
       </div>
-    </div>
-  </>
+    </>
   );
 };
