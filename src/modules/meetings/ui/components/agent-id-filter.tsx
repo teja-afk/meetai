@@ -1,5 +1,6 @@
 import { CommandSelect } from "@/components/command-select";
 import { GeneratedAvatar } from "@/components/generated-avatar";
+import { DEFAULT_PAGE } from "@/constants";
 import { useMeetingsFilters } from "@/modules/meetings/hooks/use-meetings-filters";
 import { useTRPC } from "@/trpc/client";
 import { useQuery } from "@tanstack/react-query";
@@ -37,7 +38,7 @@ export const AgentIdFilter = () => {
           </div>
         )
       }))}
-      onSelect={(value) => setFilters({ agentId: value })}
+      onSelect={(value) => setFilters({ agentId: value, page: DEFAULT_PAGE })}
       onSearch={setAgentSearch}
       value={filters.agentId ?? ""}
     />

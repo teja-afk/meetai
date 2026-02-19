@@ -10,7 +10,7 @@ import { columns } from "../components/columns";
 import { EmptyState } from "@/components/empty-state";
 import { useRouter } from "next/navigation";
 import { useMeetingsFilters } from "@/modules/meetings/hooks/use-meetings-filters";
-import { DataPagination } from "@/modules/agents/ui/components/data-pagination";
+import { DataPagination } from "@/components/data-pagination";
 
 export const MeetingsView = () => {
   const trpc = useTRPC();
