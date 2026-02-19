@@ -11,7 +11,7 @@ import { useTRPC } from "@/trpc/client";
 import { useAgentsFilters } from "@/modules/agents/hooks/use-agents-filters";
 import { columns } from "@/modules/agents/ui/components/columns";
 import { DataPagination } from "@/modules/agents/ui/components/data-pagination";
-import { DataTable } from "@/modules/agents/ui/components/data-table";
+import { DataTable } from "@/components/data-table";
 
 export const AgentsView = () => {
   const router = useRouter();
