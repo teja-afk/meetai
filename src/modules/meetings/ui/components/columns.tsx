@@ -53,12 +53,12 @@ export const columns: ColumnDef<MeetingGetMany[number]>[] = [
           <div className="flex items-center gap-x-1">
             <CornerDownRightIcon className="size-3 text-muted-foreground" />
             <span className="text-sm text-muted-foreground max-w-[200px] truncate capitalize">
-              {row.original.agent.name}
+              {row.original.agent?.name || "No agent"}
             </span>
           </div>
           <GeneratedAvatar
             variant={"botttsNeutral"}
-            seed={row.original.agent.name}
+            seed={row.original.agent?.name || "Guest"}
             className="size-4"
           />
           <span className="text-sm text-muted-foreground">
