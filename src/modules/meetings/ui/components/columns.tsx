@@ -18,13 +18,6 @@ import { GeneratedAvatar } from "@/components/generated-avatar"
 
 import { MeetingGetMany } from "@/modules/meetings/types"
 
-function formatDuration(seconds: number) {
-  return humanizeDuration(seconds * 1000, {
-    largest: 2,
-    round: true,
-    units: ["h", "m", "s"],
-  });
-};
 
 const statusIconMap = {
   upcoming: ClockArrowUpIcon,

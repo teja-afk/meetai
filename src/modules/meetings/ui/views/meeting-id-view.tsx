@@ -13,6 +13,7 @@ import { useMutation, useQueryClient, useSuspenseQuery } from "@tanstack/react-q
 import { MeetingIdViewHeader } from "@/modules/meetings/ui/components/meeting-id-view-header";
 import { UpdateMeetingDialog } from "@/modules/meetings/ui/components/update-meeting-dialog";
 import { UpcomingState } from "@/modules/meetings/ui/components/upcoming-state";
+import { CompletedState } from "@/modules/meetings/ui/components/completed-state";
 
 interface Props {
   meetingId: string;
@@ -74,7 +75,7 @@ export const MeetingIdView = ({ meetingId }: Props) => {
         />
         {isCancelled && <CancelledState />}
         {isProcessing && <ProcessingState />}
-        {isCompleted && <div>Completed</div>}
+        {isCompleted && <CompletedState data={data}/>}
         {isActive && <ActiveState meetingId={meetingId} />}
         {isUpcoming && (
           <UpcomingState
