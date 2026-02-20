@@ -1,21 +1,21 @@
+import {
+  BookOpenTextIcon,
+  ClockFadingIcon,
+  FileTextIcon,
+  FileVideoIcon,
+  SparklesIcon,
+} from "lucide-react";
 import Link from "next/link";
 import Markdown from "react-markdown";
-import {
-  SparklesIcon,
-  FileTextIcon,
-  BookOpenTextIcon,
-  FileVideoIcon,
-  ClockFadingIcon,
-} from "lucide-react";
 
 import { GeneratedAvatar } from "@/components/generated-avatar";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-import { MeetingGetOne } from "../../types";
-import { format } from "date-fns";
 import { Badge } from "@/components/ui/badge";
 import { formatDuration } from "@/lib/utils";
+import { format } from "date-fns";
+import { MeetingGetOne } from "../../types";
 
 interface Props {
   data: MeetingGetOne;
@@ -35,6 +35,7 @@ export const CompletedState = ({ data }: Props) => {
                 <BookOpenTextIcon />
                 Summary
               </TabsTrigger>
+
               <TabsTrigger
                 value="transcript"
                 className="text-muted-foreground rounded-none bg-background data-[state=active]:shadow-none border-b-2 border-transparent data-[state=active]:border-b-primary data-[state=active]:text-accent-foreground h-full hover:text-accent-foreground"
@@ -82,7 +83,7 @@ export const CompletedState = ({ data }: Props) => {
                     seed={data.agentId}
                     className="size-5"
                   />
-                  {data.agent.name}
+                  {data.agent?.name}
                 </Link>{" "}
                 <p>{data.startedAt ? format(data.startedAt, "PPP") : ""}</p>
               </div>
@@ -95,7 +96,7 @@ export const CompletedState = ({ data }: Props) => {
                 className="flex items-center gap-x-2 [&>svg]:size-4"
               >
                 <ClockFadingIcon className="text-blue-700" />
-                {row.original.duration ? formatDuration(row.original.duration) : "No duration"}
+                {data.duration ? formatDuration(data.duration) : "No duration"}
               </Badge>
               <div>
                 <Markdown
@@ -141,6 +142,16 @@ export const CompletedState = ({ data }: Props) => {
                 </Markdown>
               </div>
             </div>
+          </div>
+        </TabsContent>
+        <TabsContent value="transcript">
+          <div className="bg-white rounded-lg border px-4 py-5">
+            <p className="text-muted-foreground">Transcript content coming soon...</p>
+          </div>
+        </TabsContent>
+        <TabsContent value="chat">
+          <div className="bg-white rounded-lg border px-4 py-5">
+            <p className="text-muted-foreground">Ask AI feature coming soon...</p>
           </div>
         </TabsContent>
       </Tabs>
