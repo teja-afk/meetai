@@ -23,7 +23,7 @@ export const meetingsRouter = createTRPCRouter({
     });
     return token;
   }),
-  
+
   getTranscript: protectedProcedure
     .input(z.object({ id: z.string() }))
     .query(async ({ input, ctx }) => {
@@ -59,14 +59,14 @@ export const meetingsRouter = createTRPCRouter({
         .select()
         .from(user)
         .where(inArray(user.id, speakerIds))
-        .then((users) => {
+        .then((users) =>
           users.map((user) => ({
             ...user,
             image:
               user.image ??
-              generateAvatarUri({ seed: user.name, variant: 'initials' }),
-          }));
-        });
+              generateAvatarUri({ seed: user.name, variant: 'initials'}),
+          }))
+        );
 
       const agentSpeakers = await db
         .select()
@@ -128,7 +128,6 @@ export const meetingsRouter = createTRPCRouter({
     ]);
 
     const expirationTime = Math.floor(Date.now() / 1000) + 3600;
-    const issuedAt = Math.floor(Date.now() / 1000) - 60;
 
     const token = streamVideo.generateUserToken({
       user_id: ctx.auth.user.id,
